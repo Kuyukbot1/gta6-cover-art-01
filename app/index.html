@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Sunset Cover Maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h1>Neon Sunset<br>Cover Maker</h1>
+    <p class="tagline">Your photo + a caption, made into a multi-panel sunset poster. Everything stays on your machine — no upload, no network.</p>
+
+    <div class="group">
+      <h2>1 · Photos</h2>
+      <label class="file-label">Add your photos
+        <input id="photos" type="file" accept="image/*" multiple>
+      </label>
+      <button id="samples" type="button" class="ghost">Load the two sample photos</button>
+      <div id="thumbs" class="thumbs" aria-label="Loaded photos"></div>
+      <p class="hint">Click a thumbnail to put that photo in the selected panel. Click a panel in the preview to select it, drag it to move the photo, use the zoom slider to crop.</p>
+      <label>Zoom selected panel
+        <input id="zoom" type="range" min="1" max="3" step="0.01" value="1">
+      </label>
+      <button id="fillAll" type="button" class="ghost">Fill every panel with photo 1</button>
+    </div>
+
+    <div class="group">
+      <h2>2 · Layout</h2>
+      <div id="layouts" class="chips" role="group" aria-label="Layout">
+        <button type="button" data-layout="hero" class="chip active">Hero + 3</button>
+        <button type="button" data-layout="grid9" class="chip">Nine-panel grid</button>
+        <button type="button" data-layout="tilt" class="chip">Tilted snapshots</button>
+        <button type="button" data-layout="strip" class="chip">Poster strip</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>3 · Sunset grade</h2>
+      <div id="grades" class="chips" role="group" aria-label="Grade">
+        <button type="button" data-grade="neon" class="chip active">Neon Sunset</button>
+        <button type="button" data-grade="vice" class="chip">Vice Nights</button>
+        <button type="button" data-grade="gold" class="chip">Golden Hour</button>
+        <button type="button" data-grade="pink" class="chip">Hot Pink</button>
+        <button type="button" data-grade="noir" class="chip">Mono Noir</button>
+      </div>
+      <label class="check"><input id="decor" type="checkbox" checked> Drawn skyline, sun &amp; palms on the title block</label>
+    </div>
+
+    <div class="group">
+      <h2>4 · Caption</h2>
+      <label>Title
+        <input id="title" type="text" maxlength="24" value="NEON SUNSET">
+      </label>
+      <label>Subtitle
+        <input id="subtitle" type="text" maxlength="48" value="VICE CITY · EST. 2026">
+      </label>
+    </div>
+
+    <div class="group">
+      <h2>5 · Export</h2>
+      <div id="sizes" class="chips" role="group" aria-label="Export size">
+        <button type="button" data-size="1080x1080" class="chip active">1080 × 1080</button>
+        <button type="button" data-size="1080x1350" class="chip">1080 × 1350</button>
+        <button type="button" data-size="1920x1080" class="chip">1920 × 1080</button>
+      </div>
+      <div class="row">
+        <button id="export" type="button" class="primary">Export PNG</button>
+        <button id="exportAll" type="button">Export all 3 sizes</button>
+      </div>
+      <div class="row">
+        <button id="undo" type="button" class="ghost">Undo</button>
+        <button id="redo" type="button" class="ghost">Redo</button>
+      </div>
+      <p id="status" role="status"></p>
+    </div>
+  </section>
+  <section class="stage" aria-label="Live cover preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover preview"></canvas>
+    <p class="stage-hint">Live preview — drag a panel to reposition its photo.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
